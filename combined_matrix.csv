@@ -1,7 +1,7 @@
-sample_id,histology.characteristic.muscle_tissue,histology.characteristic.strain,histology.measure.full_denervation.percent,histology.measure.partial_denervation.percent,histology.measure.total_denervation.percent,bodyweight.characteristic.sex,bodyweight.characteristic.birth_date,bodyweight.factor.genotype,bodyweight.measure.body_weight.grams.day.0,bodyweight.measure.body_weight.grams.day.1,bodyweight.measure.body_weight.grams.week.2,grip.characteristic.birth_date.weeks,grip.characteristic.sex,grip.factor.genotype,grip.measure.latency_to_fall.seconds.1,grip.measure.latency_to_fall.seconds.2,grip.measure.latency_to_fall.seconds
-S1,,,,,,F,11/22/2024,WT,2.1,10.1,35.2,11/22/2024,f,WT,60.0,60.0,60.0
-S2,,,,,,M,11/22/2024,+/+,0.3,10.5,40.2,11/22/2024,m,HOM,23.0,25.0,24.0
-S3,,,,,,M,11/22/2024,HET,2.0,10.4,40.6,11/22/2024,m,HET,60.0,60.0,60.0
-S4,MG,C57BL/6J,4/4/1900,5.0,,,,,,,,,,,,,
-S5,Sol,C57BL/6J,99,,1.0,,,,,,,,,,,,
-S6,MG,C57BL/6J-NemfR487G/R487G,2/19/1900,40.0,10.0,,,,,,,,,,,,
+,sample_id,histology.source.identifier,histology.characteristic.muscle_tissue,histology.characteristic.strain,histology.measure.full_denervation.percent,histology.measure.partial_denervation.percent,histology.measure.total_denervation.percent,bodyweight.source.identifier,bodyweight.characteristic.sex,bodyweight.characteristic.birth_date,bodyweight.factor.genotype,bodyweight.measure.body_weight.grams.day.0,bodyweight.measure.body_weight.grams.day.14,bodyweight.measure.body_weight.grams.week.8,grip.identifier.Source.ID,grip.characteristic.birth_date.weeks,grip.characteristic.sex,grip.factor.genotype,grip.measure.latency_to_fall.seconds.1,grip.measure.latency_to_fall.seconds.2,grip.measure.latency_to_fall.seconds
+0,S1,,,,,,,M1,F,11/22/2024,WT,2.1,10.1,35.2,M1,11/22/2024,f,WT,60.0,60.0,60.0
+1,S2,,,,,,,M2,M,11/22/2024,+/+,0.3,10.5,40.2,M2,11/22/2024,m,HOM,23.0,25.0,24.0
+2,S3,,,,,,,M3,M,11/22/2024,HET,2.0,10.4,40.6,M3,11/22/2024,m,HET,60.0,60.0,60.0
+3,S4,M1,MG,C57BL/6J,95.0,5.0,,,,,,,,,,,,,,,
+4,S5,M2,Sol,C57BL/6J,99.0,,1.0,,,,,,,,,,,,,,
+5,S6,M3,MG,C57BL/6J-NemfR487G/R487G,50.0,40.0,10.0,,,,,,,,,,,,,,
