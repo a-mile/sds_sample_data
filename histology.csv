@@ -1,0 +1,4 @@
+ID,Source,strain,muscle_type,full,partial,denervated
+S4,M1,C57BL/6J,MG,4/4/1900,5,
+S5,M2,C57BL/6J,Sol,99,,1
+S6,M3,C57BL/6J-NemfR487G/R487G,MG,2/19/1900,40,10

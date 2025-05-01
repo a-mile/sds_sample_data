@@ -1,0 +1,122 @@
+{
+  "name": "Bodyweight Data Schema",
+  "resourceType": "tabular",
+  "fields": [
+    {
+      "name": "Name",
+      "title": "Sample ID",
+      "type": "string",
+      "description": "sample identifier",
+      "rdfType": "http://purl.obolibrary.org/obo/OBI_0001169",
+      "constraints": [ {"unique": true}, {"required": true} ],
+      "custom": {
+        "columnRole": "primaryIdentifier",
+        "relations": [
+          {
+            "relatedTo": ["Source"],
+            "relationType": "derivedFromBiologicalSource"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Mouse.ID",
+      "title": "Source ID",
+      "type": "string",
+      "description": "Identifier of source animal",
+      "rdfType": "http://purl.obolibrary.org/obo/OBI_0001169",
+      "constraints": [ {"unique": false}, {"required": true} ],
+      "custom": {"columnRole": "identifier"}
+    },
+    {
+      "name": "Sex",
+      "type": "string",
+      "title": "Sex",
+      "description": "Biological sex of the animal.",
+      "rdfType": "obo:PATO_0000047",
+      "constraints": [
+        { "required": true                             },
+        {                   "enum": ["Male", "Female"] }
+      ],
+      "custom": {
+        "columnRole": "characteristic",
+        "mappedDefinition": {"name": "sex"}
+      }
+    },
+    {
+      "name": "DOB",
+      "type": "date",
+      "title": "Date of Birth",
+      "description": "Date of birth of the animal.",
+      "rdfType": "obo:NCIT_C68615",
+      "constraints": [ {"required": true} ],
+      "custom": {
+        "columnRole": "characteristic",
+        "mappedDefinition": {"name": "birth date"}
+      }
+    },
+    {
+      "name": "Genotype",
+      "type": "string",
+      "title": "Genotype",
+      "description": "Genetic makeup or allele combination of the animal.",
+      "rdfType": "obo:GENO_0000002",
+      "constraints": [
+        { "required": false                               },
+        {                    "enum": ["WT", "HET", "HOM"] }
+      ],
+      "custom": {
+        "columnRole": "factor",
+        "mappedDefinition": {"name": "genotype"}
+      }
+    },
+    {
+      "name": "BW.P0",
+      "type": "number",
+      "title": "Body Weight at Day 0",
+      "description": "Body weight of the animal at postnatal day 0.",
+      "rdfType": "obo:OBI_0001169",
+      "constraints": [ {"minimum": 0, "maximum": 5} ],
+      "custom": {
+        "columnRole": "measure",
+        "unit": "grams",
+        "unitRdfType": "qudt:Gram",
+        "mappedDefinition": {"name": "body weight", "quantityKind": "Mass"},
+        "timepoint": 0,
+        "timepointUnit": "day"
+      }
+    },
+    {
+      "name": "BW.P14",
+      "type": "number",
+      "title": "Body Weight at Day 14",
+      "description": "Body weight of the animal at postnatal day 14.",
+      "rdfType": "obo:OBI_0001169",
+      "constraints": [ {"minimum": 0, "maximum": 10} ],
+      "custom": {
+        "columnRole": "measure",
+        "unit": "grams",
+        "unitRdfType": "qudt:Gram",
+        "mappedDefinition": {"name": "body weight", "quantityKind": "Mass"},
+        "timepoint": 1,
+        "timepointUnit": "day"
+      }
+    },
+    {
+      "name": "BW.8W",
+      "type": "number",
+      "title": "Body Weight at 8 Weeks",
+      "description": "Body weight of the animal at 8 weeks.",
+      "rdfType": "obo:OBI_0001169",
+      "constraints": [ {"minimum": 0, "maximum": 20} ],
+      "custom": {
+        "columnRole": "measure",
+        "unit": "grams",
+        "unitRdfType": "qudt:Gram",
+        "mappedDefinition": {"name": "body weight", "quantityKind": "Mass"},
+        "timepoint": 2,
+        "timepointUnit": "week"
+      }
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "NDS_Histology_Schema",
+  "name": "Histology Sample Data Schema (Updated, Corrected)",
+  "resourceType": "tabular",
+  "fields": [
+    {
+      "name": "ID",
+      "title": "Sample ID",
+      "type": "string",
+      "description": "Primary identifier for the histology sample.",
+      "rdfType": "obo:OBI_0001169",
+      "constraints": {"required": true, "unique": true},
+      "custom": {
+        "columnRole": "primaryIdentifier",
+        "relations": [
+          {
+            "relatedTo": ["Source"],
+            "relationType": "derivedFromBiologicalSource"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Source",
+      "title": "Source ID",
+      "type": "string",
+      "description": "Identifier of the source animal from which the sample was derived.",
+      "rdfType": "obo:OBI_0001169",
+      "constraints": {"required": true, "unique": false},
+      "custom": {"columnRole": "identifier"}
+    },
+    {
+      "name": "muscle_type",
+      "title": "Muscle Type",
+      "type": "string",
+      "description": "Type of muscle tissue sampled.",
+      "rdfType": "obo:UBERON_0002385",
+      "constraints": {"required": true},
+      "custom": {
+        "columnRole": "characteristic",
+        "mappedDefinition": {"name": "muscle tissue"}
+      }
+    },
+    {
+      "name": "strain",
+      "title": "Strain",
+      "type": "string",
+      "description": "Strain of source animal",
+      "rdfType": "obo:UBERON_0002385",
+      "constraints": {"required": true},
+      "custom": {
+        "columnRole": "characteristic",
+        "mappedDefinition": {"name": "strain"}
+      }
+    },
+    {
+      "name": "full",
+      "title": "Full Denervation",
+      "type": "number",
+      "description": "Percentage of muscle fibers fully denervated.",
+      "rdfType": "obo:OBI_0001933",
+      "constraints": {"minimum": 0, "maximum": 100},
+      "custom": {
+        "columnRole": "measure",
+        "unit": "percent",
+        "mappedDefinition": {"name": "full denervation"}
+      }
+    },
+    {
+      "name": "partial",
+      "title": "Partial Denervation",
+      "type": "number",
+      "description": "Percentage of muscle fibers partially denervated.",
+      "rdfType": "obo:OBI_0001933",
+      "constraints": {"required": true, "minimum": 0, "maximum": 100},
+      "custom": {
+        "columnRole": "measure",
+        "unit": "percent",
+        "mappedDefinition": {"name": "partial denervation"}
+      }
+    },
+    {
+      "name": "denervated",
+      "title": "Total Denervated",
+      "type": "number",
+      "description": "Overall percentage of denervated muscle fibers.",
+      "rdfType": "obo:OBI_0001933",
+      "constraints": {"minimum": 0, "maximum": 100},
+      "custom": {
+        "columnRole": "measure",
+        "unit": "percent",
+        "mappedDefinition": {"name": "total denervation"}
+      }
+    }
+  ]
+}
