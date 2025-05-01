@@ -13,7 +13,7 @@
         "columnRole": "primaryIdentifier",
         "relations": [
           {
-            "relatedTo": ["Source"],
+            "relatedTo": ["Mouse.ID"],
             "relationType": "derivedFromBiologicalSource"
           }
         ]
