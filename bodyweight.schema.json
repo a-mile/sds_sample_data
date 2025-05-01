@@ -98,7 +98,7 @@
         "unit": "grams",
         "unitRdfType": "qudt:Gram",
         "mappedDefinition": {"name": "body weight", "quantityKind": "Mass"},
-        "timepoint": 1,
+        "timepoint": 14,
         "timepointUnit": "day"
       }
     },
@@ -114,7 +114,7 @@
         "unit": "grams",
         "unitRdfType": "qudt:Gram",
         "mappedDefinition": {"name": "body weight", "quantityKind": "Mass"},
-        "timepoint": 2,
+        "timepoint": 8,
         "timepointUnit": "week"
       }
     }
