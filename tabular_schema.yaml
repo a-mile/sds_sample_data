@@ -1,0 +1,205 @@
+id: TabularFieldSchema
+name: Tabular Field Schema
+prefixes:
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  obo: http://purl.obolibrary.org/obo/
+  qudt: http://qudt.org/schema/qudt/
+  allotrope: http://purl.allotrope.org/ontologies/role#
+  sio: http://semanticscience.org/resource/
+  cl: http://purl.obolibrary.org/obo/CLO_
+  fbcv: http://purl.obolibrary.org/obo/FBcv_
+types:
+  uriorcurie:
+    base: str
+    uri: xsd:anyURI
+enums:
+  FieldTypeEnum:
+    permissible_values:
+      string:
+        description: Textual or string data.
+        meaning: schema:Text
+      number:
+        description: Numeric data of any kind, including decimals.
+        meaning: schema:Number
+      integer:
+        description: Whole number data.
+        meaning: schema:Integer
+      boolean:
+        description: True or false value.
+        meaning: schema:Boolean
+      date:
+        description: Calendar date value.
+        meaning: schema:Date
+      datetime:
+        description: Combined date and time value.
+        meaning: schema:DateTime
+      url:
+        description: A Uniform Resource Locator (URL) for linking to web resources.
+        meaning: schema:URL
+  FieldRoleEnum:
+    permissible_values:
+      primaryIdentifier:
+        description: Uniquely identifies a row within the table. If designated, values
+          are required for each row.
+        meaning: schema:identifier
+      identifier:
+        description: Identifier for an entity associated with the record.
+        meaning: schema:identifier
+      factor:
+        description: Study design or grouping variable.
+        meaning: obo:NCIT_C164385
+      characteristic:
+        description: Intrinsic property of the sample or source.
+        meaning: obo:PATO_0000001
+      measure:
+        description: Measurement output collected from an assay.
+        meaning: allotrope:AFRL_0000157
+      procedural:
+        description: Metadata about procedural aspects of the assay.
+        meaning: obo:FBcv_0003175
+      excluded:
+        description: Field that is ignored because it is not relevant for analysis.
+      
+  RelationTypeEnum:
+    permissible_values:
+      derivedFromSource:
+        description: Sample derived from a biological source.
+        meaning: obo:CLO_0037207
+      derivedFromSample:
+        description: Sample derived from another sample.
+        meaning: sio:SIO_000244
+      derivedFromMeasurement:
+        description: Measurement derived from other measurements.
+        meaning: allotrope:AFRL_0000155
+classes:
+  FieldDescriptor:
+    description: Describes a single field(column) in the table.
+    attributes:
+      name:
+        description: Name of the field(column) as it appears in the file.
+        range: string
+        required: true
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#name
+      title:
+        description: Human-readable title for display.
+        range: string
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#title
+      type:
+        description: Data type of the field.
+        range: FieldTypeEnum
+        required: true
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#type
+      description:
+        description: Explanation of what the field represents.
+        range: string
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#description
+      rdfType:
+        description: Ontology term that defines the concept.
+        range: uriorcurie
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#rich-types
+      constraints:
+        description: Validation constraints applied to this field.
+        range: FieldConstraints
+        multivalued: true
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#constraints
+      example:
+        description: An example value for this field.
+        range: string
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#example
+      default:
+        description: Default value for this field if missing.
+        range: string
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#default
+      missingValues:
+        description: List of strings that represent missing values.
+        range: string
+        multivalued: false
+        see_also:
+        - https://specs.frictionlessdata.io/table-schema/#missingvalues
+      custom:
+        description: Custom domain specific properties.
+        range: CustomProperties
+  FieldConstraints:
+    description: "Used to define validation rules for the field\u2019s values."
+    attributes:
+      required:
+        range: boolean
+        description: Indicates whether this field cannot be null.
+      unique:
+        range: boolean
+        description: Indicates whether this field must be unique among all rows.
+      enum:
+        range: string
+        multivalued: true
+      minLength:
+        range: integer
+        description: An integer that specifies the minimum length of a value..
+      maxLength:
+        range: integer
+        description: An integer that specifies the maximum length of a value.
+      minimum:
+        range: string
+        description: Specifies a minimum value for a integer, number, date, or datetime.
+      maximum:
+        range: string
+        description: Specifies a maximum value for a integer, number, date, or datetime.
+      pattern:
+        range: string
+        description: Regular expression pattern for validating the field value.
+      format:
+        range: string
+        description: Expected format of the field value, such as ISO date format or
+          email.
+  CustomProperties:
+    description: Custom extensions for semantic and procedural properties.
+    attributes:
+      fieldRole:
+        range: FieldRoleEnum
+        description: The purpose of the field in the table.
+      unit:
+        range: string
+        description: Unit of measurement for the field.
+        meaning: qudt:Unit
+      timepoint:
+        range: integer
+        description: Time point of the measurement or observation if a member of a
+          series.
+        meaning: obo:OBI_0000312
+      timepointUnit:
+        range: string
+        description: Unit of the time point.
+        meaning: qudt:Unit
+      mappedDefinition:
+        range: MappedDefinition
+        description: Mapping of the field to a standard definition.
+      relations:
+        range: Relation
+        description: An array of relationships between the field and other fields
+          within the schema.
+        multivalued: true
+  MappedDefinition:
+    description: Information about the definition of the field if it is a characteristic,
+      factor, or measure.
+    attributes:
+      name:
+        range: string
+      quantityKind:
+        range: string
+        meaning: qudt:QuantityKind
+  Relation:
+    description: Represents a relationship between fields (e.g., derived from).
+    attributes:
+      relatedTo:
+        range: string
+        multivalued: true
+      relationType:
+        range: RelationTypeEnum

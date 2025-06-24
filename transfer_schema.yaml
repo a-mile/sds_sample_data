@@ -1,0 +1,106 @@
+id: https://example.org/structured-data-service
+name: structured_data_service
+prefixes:
+  linkml: https://w3id.org/linkml/
+  sds: https://example.org/structured-data-service/
+default_prefix: sds
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+  MeasureSet:
+    description: A container for samples and metadata definitions
+    attributes:
+      samples:
+        range: Sample
+        multivalued: true
+      units:
+        range: Unit
+        multivalued: true
+        inlined: true
+        key: id
+      characteristic_definitions:
+        range: TermDefinition
+        multivalued: true
+        inlined: true
+        key: name
+      factor_definitions:
+        range: TermDefinition
+        multivalued: true
+        inlined: true
+        key: name
+      measure_definitions:
+        range: TermDefinition
+        multivalued: true
+        inlined: true
+        key: name
+
+  Sample:
+    description: A biological sample with associated metadata and measurements
+    attributes:
+      id:
+        identifier: true
+        required: true
+      characteristics:
+        range: NamedValue
+        multivalued: true
+      factors:
+        range: NamedValue
+        multivalued: true
+      measures:
+        range: Measure
+        multivalued: true
+
+  NamedValue:
+    description: A reference to a named definition with a value
+    attributes:
+      name:
+        range: string
+        required: true
+      value:
+        range: string
+        required: true
+
+  Measure:
+    is_a: NamedValue
+    description: A measurement name/value with additional metadata
+    attributes:
+      unit_id:
+        range: string
+        required: false
+        description: Reference to a unit defined in the units section
+      timePoint:
+        range: float
+        required: false
+      timePointUnit:
+        range: string
+        required: false
+
+  TermDefinition:
+    description: A reusable definition for a characteristic, factor, or measure
+    attributes:
+      name:
+        identifier: true
+        range: string
+      accession_id:
+        range: string
+        required: true
+        description: CURIE or URI for ontology reference
+
+  Unit:
+    description: A reusable unit definition
+    attributes:
+      id:
+        identifier: true
+        range: string
+        description: Name or symbol of the unit (e.g. 'grams')
+      quantity_kind:
+        range: string
+        required: true
+        description: The physical quantity the unit represents (e.g. 'mass')
+      accession_id:
+        range: string
+        required: false
+        description: Optional CURIE or URI for the unit (e.g. http://qudt.org/vocab/unit/Gram)
