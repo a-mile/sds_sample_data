@@ -1,0 +1,58 @@
+{
+  "samples": [
+    {
+      "id": "S1",
+      "characteristics": [
+        {
+          "name": "sex",
+          "value": "m"
+        }
+      ],
+      "factors": [
+        {
+          "name": "strain",
+          "value": "C57BL/6J"
+        }
+      ],
+      "measures": [
+        {
+          "name": "body weight",
+          "value": "24",
+          "unit_id": "gram",
+          "index": 8,
+          "index_unit": "day"
+        }
+      ]
+    }
+  ],
+  "units": {
+    "gram": {
+      "id": "gram",
+      "quantity_kind": "mass",
+      "accession_id": "http://qudt.org/vocab/unit/Gram"
+    },
+    "day": {
+      "id": "day",
+      "quantity_kind": "time",
+      "accession_id": "http://qudt.org/vocab/unit/Day"
+    }
+  },
+  "characteristic_definitions": {
+    "sex": {
+      "name": "sex",
+      "accession_id": "PATO:0000384"
+    }
+  },
+  "factor_definitions": {
+    "strain": {
+      "name": "strain",
+      "accession_id": "MGI:3028467"
+    }
+  },
+  "measure_definitions": {
+    "body weight": {
+      "name": "body weight",
+      "accession_id": "OBI:0001169"
+    }
+  }
+}
