@@ -5,54 +5,36 @@
       "characteristics": [
         {
           "name": "sex",
-          "value": "m"
-        }
-      ],
-      "factors": [
+          "value": "male"
+        },
         {
           "name": "strain",
           "value": "C57BL/6J"
+        },
+        {
+          "name": "genotype",
+          "value": "WT"
         }
       ],
       "measures": [
         {
           "name": "body weight",
           "value": "24",
-          "unit_id": "gram",
-          "index": 8,
-          "index_unit": "day"
+          "unit": "grams",
+          "timepoint": 8,
+          "timepoint": "days"
+        },
+        {
+          "name": "body weight",
+          "value": "24",
+          "unit": "grams",
+          "timepoint": 16,
+          "timepoint": "days"
         }
       ]
-    }
-  ],
-  "units": {
-    "gram": {
-      "id": "gram",
-      "quantity_kind": "mass",
-      "accession_id": "http://qudt.org/vocab/unit/Gram"
     },
-    "day": {
-      "id": "day",
-      "quantity_kind": "time",
-      "accession_id": "http://qudt.org/vocab/unit/Day"
+    "factors": [
+    {
+       "name": "strain"
     }
-  },
-  "characteristic_definitions": {
-    "sex": {
-      "name": "sex",
-      "accession_id": "PATO:0000384"
-    }
-  },
-  "factor_definitions": {
-    "strain": {
-      "name": "strain",
-      "accession_id": "MGI:3028467"
-    }
-  },
-  "measure_definitions": {
-    "body weight": {
-      "name": "body weight",
-      "accession_id": "OBI:0001169"
-    }
-  }
-}
+  ]
